@@ -1,0 +1,19 @@
+services:
+  jupyter:
+    image: jupyter/base-notebook:latest
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./docker_volumes/jupyter:/home/jovyan/work
+    environment:
+      - JUPYTER_TOKEN=123
+
+  ubuntu:
+    image: ubuntu:20.04
+    command: ["sleep", "infinity"]
+    container_name: ubuntu
+    restart: unless-stopped
+    volumes:
+      - ./docker_volumes/ubuntu:/root
+
+    
